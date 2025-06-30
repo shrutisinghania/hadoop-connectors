@@ -66,10 +66,13 @@ public abstract class GoogleCloudStorageOptions {
         .setTrafficDirectorEnabled(true)
         .setWriteChannelOptions(AsyncWriteChannelOptions.DEFAULT)
         .setHnBucketRenameEnabled(false)
-        .setGrpcWriteEnabled(false);
+        .setGrpcWriteEnabled(false)
+        .setStorageClientCachingEnabled(false);
   }
 
   public abstract Builder toBuilder();
+
+  public abstract boolean isStorageClientCachingEnabled();
 
   public abstract boolean isGrpcEnabled();
 
@@ -231,6 +234,8 @@ public abstract class GoogleCloudStorageOptions {
     public abstract Builder setHnBucketRenameEnabled(boolean enabled);
 
     public abstract Builder setGrpcWriteEnabled(boolean grpcWriteEnabled);
+
+    public abstract Builder setStorageClientCachingEnabled(boolean storageClientCachingEnabled);
 
     abstract GoogleCloudStorageOptions autoBuild();
 
